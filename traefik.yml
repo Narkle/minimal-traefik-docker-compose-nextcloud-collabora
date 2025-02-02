@@ -1,0 +1,21 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: "${ACME_MAIL}"
+      storage: "${VOLUMES_LETSENCRYPT}/acme.json"
+      httpChallenge:
+        entryPoint: "web"
+
+providers:
+  docker:
+    exposedByDefault: false
