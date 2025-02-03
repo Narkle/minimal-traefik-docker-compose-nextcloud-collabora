@@ -55,7 +55,7 @@ services:
 
   db:
     image: ${MYSQL_IMAGE}
-    container_name: nextcloud-db
+    container_name: nextcloud
     restart: always
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
     volumes:
@@ -65,6 +65,8 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
+    networks:
+      - traefik-net
 
   collabora:
     image: ${COLLABORA_IMAGE}
