@@ -11,8 +11,8 @@ entryPoints:
 certificatesResolvers:
   myresolver:
     acme:
-      email: "${ACME_MAIL}"
-      storage: "${VOLUMES_LETSENCRYPT}/acme.json"
+      email: {{env "ACME_MAIL"}}
+      storage: "{{env 'VOLUMES_LETSENCRYPT'}}/acme.json"
       httpChallenge:
         entryPoint: "web"
 
